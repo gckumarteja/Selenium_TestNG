@@ -2,12 +2,12 @@ package pages;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import tests.baseTest;
+
+import java.util.HashMap;
 
 public class amazonPages {
 
@@ -32,12 +32,13 @@ public class amazonPages {
 
     }
 
-    public void search(String seachwith)
+    public void search(HashMap<String,String> data)
     {
-        searchBox.sendKeys(seachwith);
-        logger.log(Status.PASS, "Searched with :" +seachwith );
+        searchBox.sendKeys(data.get("Search"));
+        logger.log(Status.PASS, "Searched with :" +data.get("Search") );
         search.click();
         logger.log(Status.PASS, "Clicked on Search icon");
+        data.put("Status",data.get("Search")+"Testing");
     }
 
 

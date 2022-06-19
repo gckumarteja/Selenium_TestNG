@@ -1,4 +1,4 @@
-package tests;
+package factory;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -12,7 +12,7 @@ import org.testng.annotations.*;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
-public class baseTest {
+public class baseTest_old {
     private ThreadLocal<WebDriver> driver =new ThreadLocal<WebDriver>();
     public void setDriver(WebDriver driver)
     {

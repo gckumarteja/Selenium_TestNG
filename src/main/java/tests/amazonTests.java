@@ -1,30 +1,35 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.support.PageFactory;
+import com.aventstack.extentreports.ExtentTest;
+import factory.ExtentTestManager;
+import factory.baseTest;
 import org.testng.annotations.Test;
 import pages.amazonPages;
 
-public class amazonTests extends baseTest{
+import java.util.HashMap;
 
-    @Test
-    public void searchOnepuls() throws InterruptedException {
+public class amazonTests extends baseTest {
+
+    ExtentTest log;
+    @Test(dataProvider = "data")
+    public void searchMobilePhones(HashMap<String,String> data) throws InterruptedException {
         //amazonPages amazon = PageFactory.initElements(getDriver(), amazonPages.class);
-        amazonPages amazon = new amazonPages(getDriver(),getTest());
+        amazonPages amazon = new amazonPages(getDriver(), ExtentTestManager.getTest());
+        log=ExtentTestManager.getTest();
         //getDriver().get("https://www.amazon.in/");
         amazon.openAmazon("https://www.amazon.in/");
-        amazon.search("OnePlus");
-        //Thread.sleep(1000);
+        amazon.search(data);
+        log.info("Map Return : "+data.get("Status"));
     }
 
-    @Test
-    public void searchIphone() throws InterruptedException {
+    @Test(dataProvider = "data")
+    public void searchLaptops(HashMap<String,String> data) throws InterruptedException {
         //amazonPages amazon = PageFactory.initElements(getDriver(), amazonPages.class);
-        amazonPages amazon = new amazonPages(getDriver(),getTest());
+        amazonPages amazon = new amazonPages(getDriver(),ExtentTestManager.getTest());
+        log=ExtentTestManager.getTest();
         //getDriver().get("https://www.amazon.in/");
         amazon.openAmazon("https://www.amazon.in/");
-        amazon.search("Iphone");
-        //Thread.sleep(1000);
+        amazon.search(data);
+        log.info("Map Return : "+data.get("Status"));
     }
 }
